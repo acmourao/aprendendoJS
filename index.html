@@ -28,17 +28,24 @@
         </header>
 
         <main class="px-3">
-            <div ng-controller="layoutController">
+            <div ng-controller="mainController">
                 <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download,
                     edit
                     the text, and add your own fullscreen background photo to make it your own.</p>
 
                 <div style='padding: 3%'>
                     <input name="nome" id="nome" type="text" ng-model="meuNome" placeholder="Digite um nome aqui..."
-                        style='margin-bottom: 20px'>
+                        style='margin-bottom: 20px' ng-blur="updateRootScope()">
                     <h1>Olá, {{ firstName + " " + lastName + " eu sou o " + meuNome }}!</h1>
                 </div>
+            </div>
 
+            <div ng-controller="layoutController">
+                <p>
+                    <button ng-click="saveLayoutToAPI()">click aqui</button>
+                </p>
+            </div>
+            <div ng-controller="segundoLayoutController">
                 <p>
                     <button ng-click="saveLayoutToAPI()">click aqui</button>
                 </p>
