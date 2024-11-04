@@ -15,10 +15,11 @@ app.controller('mainController', function ($scope, $rootScope) {
 app.controller('layoutController', ['$scope', 'CtrlService', function ($scope, ctrlService) {
 
     $scope.saveLayoutToAPI = function () {
+        $scope.meuNome = 'teste';
         ctrlService.save($scope);
     }
     $scope.loadLayoutFromAPI = function () {
-        ctrlService.load($scope);
+        ctrlService.load();
     };
 
 }]);
@@ -30,17 +31,25 @@ app.controller('segundoLayoutController', ['$scope', 'CtrlService', function ($s
         ctrlService.save($scope);
     }
     $scope.loadLayoutFromAPI = function () {
-        ctrlService.load($scope);
+        ctrlService.load();
     };
 
 }]);
 
-app.service('CtrlService', ['$log', function ($log) {
+app.service('CtrlService', ['$log', 'AlertService', '$rootScope', function ($log, alertService, $rootScope) {
     this.save = function ($scope) {
-        $log.log('Layout saved.' + $scope.meuNome);
+        $log.log('Layout saved -> ' + $rootScope.meuNome + ' -> ' + $scope.meuNome);
+        alertService.doAlert($rootScope.meuNome + ' -> ' + $scope.meuNome);
     };
 
-    this.load = function ($scope) {
-        $log.log('Layout loaded.' + $scope.meuNome);
+    this.load = function () {
+        $log.log('Layout loaded -> ' + $rootScope.meuNome);
+    };
+
+}]);
+
+app.service('AlertService', ['$window', function ($window) {
+    this.doAlert = function (msg) {
+        $window.alert(msg);
     };
 }]);
