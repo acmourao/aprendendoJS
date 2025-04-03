@@ -20,7 +20,7 @@
         <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0">Cover</h3>
-                <h1>Aprendendo JS</h1>
+                <h1>Aprendendo Angular</h1>
                 <div class="justify-content-center float-md-end">
                     <p id="texto_inner"></p>
                 </div>
@@ -29,7 +29,8 @@
 
         <main class="px-3">
             <div ng-controller="mainController">
-                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download,
+                    edit the text, and add your own fullscreen background photo to make it your own.</p>
                 <div style='padding: 3%'>
                     <input name="nome" id="nome" type="text" ng-model="meuNome" placeholder="Digite um nome aqui..."
                         style='margin-bottom: 20px' ng-blur="updateRootScope()">
@@ -37,15 +38,28 @@
                 </div>
             </div>
 
-            <div ng-controller="layoutController">
-                <p>
-                    <button ng-click="saveLayoutToAPI()">click aqui</button>
-                </p>
-            </div>
-            <div ng-controller="segundoLayoutController">
-                <p>
-                    <button ng-click="saveLayoutToAPI()">click aqui</button>
-                </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div ng-controller="layoutController">
+                            <p>
+                                <button ng-click="saveLayoutToAPI()">click aqui</button>
+                            </p>
+                            <p> <button ng-click="loadLayoutFromAPI()">click aqui</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div ng-controller="LayoutController2">
+                            <p>
+                                <button ng-click="saveLayoutToAPI()">click aqui</button>
+                            </p>
+                            <p>
+                                <button ng-click="loadLayoutFromAPI()">click aqui</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </main>
