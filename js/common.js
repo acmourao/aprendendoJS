@@ -1,9 +1,12 @@
-var app = angular.module("myApp", []);
+var app = angular.module("sampleApp", []);
 
 app.run(function ($rootScope) {
     $rootScope.firstName = "John";
     $rootScope.lastName = "Doe";
+    $rootScope.AppName = "SampleApp";
     $rootScope.meuNome = "zé do caixão";
+    $rootScope.versao = "1.0.1";
+    $rootScope.liberacao = "zé do caixão";
 });
 
 app.controller('mainController', function ($scope, $rootScope) {
@@ -18,9 +21,6 @@ app.controller('layoutController', ['$scope', 'CtrlService', function ($scope, c
         $scope.meuNome = 'Tiririca';
         ctrlService.save($scope);
     }
-    $scope.loadLayoutFromAPI = function () {
-        ctrlService.load($scope);
-    };
 
 }]);
 
@@ -38,15 +38,14 @@ app.controller('LayoutController2', ['$scope', 'CtrlService', function ($scope, 
 
 app.service('CtrlService', ['$log', 'AlertService', '$rootScope', function ($log, alertService, $rootScope) {
     this.save = function ($scope) {
-        $log.log('Layout saved -> ' + $rootScope.meuNome + ' <- ' + $scope.meuNome);
-        alertService.doAlert($rootScope.meuNome + ' <- ' + $scope.meuNome);
+        $log.log($rootScope.meuNome + ' <- ' + $scope.meuNome);
+        // alertService.doAlert($rootScope.meuNome + ' <- ' + $scope.meuNome);
         $rootScope.meuNome = $scope.meuNome;
     };
 
     this.load = function ($scope) {
-        $log.log('Layout loaded -> ' + $rootScope.meuNome + ' ->' + $scope.meuNome);
-        alertService.doAlert($rootScope.meuNome + ' -> ' + $scope.meuNome);
-        $scope.meuNome = $rootScope.meuNome;
+        $scope.meuNome = "zé do caixão";
+        this.save($scope);
     };
 
 }]);
